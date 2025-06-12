@@ -1,10 +1,10 @@
 <?php
-// Mulai sesi jika belum aktif
+// Mulai sesi
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Memuat data tugas dari file data.php
+// Memuat data tugas
 include 'data.php';
 
 // Fungsi untuk menambahkan tugas baru ke dalam daftar
@@ -12,13 +12,13 @@ function tambahTugas($judul) {
     $_SESSION['tasks'][] = ['judul' => $judul, 'status' => 'belum'];
 }
 
-// Fungsi untuk menghapus tugas berdasarkan index-nya
+// Menghapus tugas 
 function hapusTugas($index) {
     unset($_SESSION['tasks'][$index]);
     $_SESSION['tasks'] = array_values($_SESSION['tasks']);
 }
 
-// Fungsi untuk mengubah status tugas (belum ⇄ selesai)
+// mengubah status tugas 
 function toggleStatus($index) {
     if ($_SESSION['tasks'][$index]['status'] === 'belum') {
         $_SESSION['tasks'][$index]['status'] = 'selesai';
@@ -27,7 +27,6 @@ function toggleStatus($index) {
     }
 }
 
-// Fungsi untuk mengedit judul tugas berdasarkan index
 function editTugas($index, $judulBaru) {
     $_SESSION['tasks'][$index]['judul'] = $judulBaru;
 }
