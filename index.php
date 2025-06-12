@@ -1,5 +1,5 @@
 <?php
-// Mulai sesi dan sertakan file yang berisi fungsi-fungsi
+
 session_start();
 include 'functions.php';
 
